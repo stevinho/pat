@@ -11,3 +11,4 @@ Software-Project is licensed under Apache License 2.0.
 - ngBonita: Rodrigue Le Gall, https://github.com/rodriguelegall/ngBonita, Apache License 2004.
 - ngStorage: Gias Kay Lee, https://github.com/gsklee/ngStorage, MIT License 2015.
 - JATOS: Kristian Lange and Elisa Filevich, https://github.com/JATOS/JATOS, Apache License 2016.
+- surveyJS: Blake Embrey, https://github.com/andrewtelnov/surveyjs, MIT License 2015.
