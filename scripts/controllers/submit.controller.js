@@ -30,6 +30,8 @@
             .login('walter.bates', 'bpm') //id:4
             .then(submitUserActions());
 
+        ProcessDataOp.SAVEDATE("EFIEMFIEMFI");
+
         //////////////
         function submitUserActions() { // (session)
 
@@ -83,7 +85,7 @@
                          */
                         ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
                             .success(function (data) {
-                                console.log("setProcessId -- ok");
+                                console.log("ProcessDataOp.setProcessId -- ok");
 
                                 // speichert die CaseId aus des POST-Response (Antwort)
                                 CASEID = data.caseId;
@@ -94,7 +96,7 @@
 
                                 // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
                                 $scope.$storage.saveCaseIdToStorage = CASEID;
-                                console.log("STORAGE caseId: " + $scope.$storage.saveCaseIdToStorage);
+                                console.log("$storage - caseId: " + $scope.$storage.saveCaseIdToStorage);
                             })
                             .error(function (error) {
                                 $scope.status = 'Unable to set process id: ' + error.message;

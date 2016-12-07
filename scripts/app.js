@@ -35,6 +35,8 @@
 
                 // Controller
                 'SubmitRequestControllerModule',
-                'ReviewRequestControllerModule'
+                'ReviewRequestControllerModule',
+                'SubmitRequest2ControllerModule',
+                'SubmitRequest3ControllerModule'
             ]);
 })(angular);
