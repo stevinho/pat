@@ -34,9 +34,13 @@
                 'CookieConfModule',
 
                 // Controller
-                'SubmitRequestControllerModule',
                 'ReviewRequestControllerModule',
+                'ReviewRequest2ControllerModule',
+                'SubmitRequestControllerModule',
                 'SubmitRequest2ControllerModule',
-                'SubmitRequest3ControllerModule'
+                'SubmitRequest3ControllerModule',
+                'SubmitRequest4ControllerModule',
+                'SubmitRequest5ControllerModule',
+                'SubmitRequest6ControllerModule'
             ]);
 })(angular);

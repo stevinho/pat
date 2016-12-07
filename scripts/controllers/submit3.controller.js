@@ -14,9 +14,9 @@
         .module('SubmitRequest3ControllerModule', ['ngBonita', 'ngStorage']) //'ngCookies'
         .controller('Submit3Controller', Submit3Function);
 
-    Submit3Function.$inject = ["$scope", "bonitaAuthentication", "ProcessDataOp", '$localStorage'];
+    Submit3Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
 
-    function Submit3Function($scope, bonitaAuthentication, ProcessDataOp, $localStorage) {
+    function Submit3Function($scope, bonitaAuthentication, $localStorage) {
 
         var DEPDATE;
         var NUMBEROFNIGHTS;
@@ -48,8 +48,8 @@
                 DEPDATE = $scope.$storage.DEPDATE;
                 console.log("DEPDATE - controller3: " + DEPDATE);
 
-                $scope.$storage.NOF = $scope.numberOfNights;
-                NUMBEROFNIGHTS = $scope.$storage.NOF;
+                $scope.$storage.NUMBEROFNIGHTS = $scope.numberOfNights;
+                NUMBEROFNIGHTS = $scope.$storage.NUMBEROFNIGHTS;
                 console.log("NUMBEROFNIGHTS - controller3: " + NUMBEROFNIGHTS);
 
 

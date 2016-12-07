@@ -11,16 +11,19 @@
     'use strict';
 
     angular
-        .module('SubmitRequest2ControllerModule', ['ngBonita', 'ngStorage']) //'ngCookies'
-        .controller('Submit2Controller', Submit2Function);
+        .module('SubmitRequest6ControllerModule', ['ngBonita', 'ngStorage'])
+        .controller('Submit6Controller', Submit6Function);
 
-    Submit2Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
+    Submit6Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage', 'ProcessDataOp'];
 
+    function Submit6Function($scope, bonitaAuthentication, $localStorage, ProcessDataOp) {
 
-
-    function Submit2Function($scope, bonitaAuthentication, $localStorage) {
-
+        var CASEID;
         var DEPDATE;
+        var NUMBEROFNIGHTS;
+        var HOTELNEEDED;
+        var DESTINATION;
+        var REASON;
 
         // LocalStorage initialisation
         $scope.$storage = $localStorage.$default({
@@ -45,11 +48,66 @@
                 // if submit-button has been clicked
                 $scope.submitted = true;
 
-                $scope.$storage.DEPDATE = $scope.departureDate;
+                // just to show what has been saved
                 DEPDATE = $scope.$storage.DEPDATE;
-                console.log("DEPDATE - controller2: " + DEPDATE);
+                console.log("DEPDATE - controller6: " + DEPDATE);
+
+                NUMBEROFNIGHTS = $scope.$storage.NUMBEROFNIGHTS;
+                console.log("NUMBEROFNIGHTS - controller6: " + NUMBEROFNIGHTS);
+
+                HOTELNEEDED = $scope.$storage.HOTELNEEDED;
+                console.log("HOTELNEEDED - controller6: " + HOTELNEEDED);
+
+                DESTINATION = $scope.$storage.DESTINATION;
+                console.log("DESTINATION - controller6: " + DESTINATION);
+
+                $scope.$storage.REASON = $scope.reason;
+                REASON = $scope.$storage.REASON;
+                console.log("REASON - controller6: " + REASON);
 
 
+                // Form Input -- get the data from the form and update the request payload for the POST-request
+                $scope.requestPayload = {
+                    "travelRequestInput": {
+                        "departureDate" : $scope.$storage.DEPDATE,
+                        "numberOfNights": $scope.$storage.NUMBEROFNIGHTS,
+                        "hotelNeeded"   : $scope.$storage.HOTELNEEDED, //$scope.hotelNeeded = { value : true }; --> returns true/false
+                        "destination"   : $scope.$storage.DESTINATION,
+                        "reason"        : $scope.$storage.REASON
+                    }
+                };
+
+                $scope.msg = 'Data sent: ' + JSON.stringify($scope.requestPayload);
+
+                ProcessDataOp.getProcessId()
+                    .success(function successCallback(data) {
+
+                        // processID
+                        $scope.processId = data;
+                        console.log("getProcessId -- ok: " + $scope.processId[0].id);
+
+                        ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
+                            .success(function (data) {
+                                console.log("ProcessDataOp.setProcessId -- ok");
+
+                                // speichert die CaseId aus des POST-Response (Antwort)
+                                CASEID = data.caseId;
+
+                                // caseId in URL einsetzen
+                                // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
+                                ProcessDataOp.setCaseIdInUrl(CASEID);
+
+                                // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
+                                $scope.$storage.saveCaseIdToStorage = CASEID;
+                                console.log("$storage - caseId: " + $scope.$storage.saveCaseIdToStorage);
+                            })
+                            .error(function (error) {
+                                $scope.status = 'Unable to set process id: ' + error.message;
+                            })
+                    })
+                    .error(function errorCallback(error) {
+                        $scope.status = 'Unable to load data (getProccessId): ' + error.message;
+                    });
             }; // end - submit.function
         } //end - handleUserAction.function
     } // end SubmitFunction
@@ -71,7 +129,6 @@
 //     angular.element('[ng-controller=SubmitController]').scope().$storage.x = CASEID;
 //     console.log("$scope.write()" + angular.element('[ng-controller=SubmitController]').scope().$storage.x);
 // };
-
 
 // Save Form Input to LocalStorage
 //$scope.saveUserInputToDisplay = function () {

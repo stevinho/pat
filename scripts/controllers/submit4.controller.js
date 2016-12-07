@@ -11,16 +11,16 @@
     'use strict';
 
     angular
-        .module('SubmitRequest2ControllerModule', ['ngBonita', 'ngStorage']) //'ngCookies'
-        .controller('Submit2Controller', Submit2Function);
+        .module('SubmitRequest4ControllerModule', ['ngBonita', 'ngStorage'])
+        .controller('Submit4Controller', Submit4Function);
 
-    Submit2Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
+    Submit4Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
 
-
-
-    function Submit2Function($scope, bonitaAuthentication, $localStorage) {
+    function Submit4Function($scope, bonitaAuthentication, $localStorage) {
 
         var DEPDATE;
+        var NUMBEROFNIGHTS;
+        var HOTELNEEDED;
 
         // LocalStorage initialisation
         $scope.$storage = $localStorage.$default({
@@ -45,9 +45,16 @@
                 // if submit-button has been clicked
                 $scope.submitted = true;
 
-                $scope.$storage.DEPDATE = $scope.departureDate;
+
                 DEPDATE = $scope.$storage.DEPDATE;
-                console.log("DEPDATE - controller2: " + DEPDATE);
+                console.log("DEPDATE - controller4: " + DEPDATE);
+
+                NUMBEROFNIGHTS = $scope.$storage.NUMBEROFNIGHTS;
+                console.log("NUMBEROFNIGHTS - controller4: " + NUMBEROFNIGHTS);
+
+                $scope.$storage.HOTELNEEDED = $scope.hotelNeeded;
+                HOTELNEEDED = $scope.$storage.HOTELNEEDED;
+                console.log("HOTELNEEDED - controller4: " + HOTELNEEDED);
 
 
             }; // end - submit.function
@@ -71,7 +78,6 @@
 //     angular.element('[ng-controller=SubmitController]').scope().$storage.x = CASEID;
 //     console.log("$scope.write()" + angular.element('[ng-controller=SubmitController]').scope().$storage.x);
 // };
-
 
 // Save Form Input to LocalStorage
 //$scope.saveUserInputToDisplay = function () {

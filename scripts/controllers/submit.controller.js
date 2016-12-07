@@ -30,7 +30,6 @@
             .login('walter.bates', 'bpm') //id:4
             .then(submitUserActions());
 
-        ProcessDataOp.SAVEDATE("EFIEMFIEMFI");
 
         //////////////
         function submitUserActions() { // (session)

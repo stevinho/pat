@@ -11,16 +11,17 @@
     'use strict';
 
     angular
-        .module('SubmitRequest2ControllerModule', ['ngBonita', 'ngStorage']) //'ngCookies'
-        .controller('Submit2Controller', Submit2Function);
+        .module('SubmitRequest5ControllerModule', ['ngBonita', 'ngStorage'])
+        .controller('Submit5Controller', Submit5Function);
 
-    Submit2Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
+    Submit5Function.$inject = ["$scope", "bonitaAuthentication", '$localStorage'];
 
-
-
-    function Submit2Function($scope, bonitaAuthentication, $localStorage) {
+    function Submit5Function($scope, bonitaAuthentication, $localStorage) {
 
         var DEPDATE;
+        var NUMBEROFNIGHTS;
+        var HOTELNEEDED;
+        var DESTINATION;
 
         // LocalStorage initialisation
         $scope.$storage = $localStorage.$default({
@@ -45,10 +46,18 @@
                 // if submit-button has been clicked
                 $scope.submitted = true;
 
-                $scope.$storage.DEPDATE = $scope.departureDate;
                 DEPDATE = $scope.$storage.DEPDATE;
-                console.log("DEPDATE - controller2: " + DEPDATE);
+                console.log("DEPDATE - controller5: " + DEPDATE);
 
+                NUMBEROFNIGHTS = $scope.$storage.NUMBEROFNIGHTS;
+                console.log("NUMBEROFNIGHTS - controller5: " + NUMBEROFNIGHTS);
+
+                HOTELNEEDED = $scope.$storage.HOTELNEEDED;
+                console.log("HOTELNEEDED - controller5: " + HOTELNEEDED);
+
+                $scope.$storage.DESTINATION = $scope.destination;
+                DESTINATION = $scope.$storage.DESTINATION;
+                console.log("DESTINATION - controller5: " + DESTINATION);
 
             }; // end - submit.function
         } //end - handleUserAction.function
@@ -71,7 +80,6 @@
 //     angular.element('[ng-controller=SubmitController]').scope().$storage.x = CASEID;
 //     console.log("$scope.write()" + angular.element('[ng-controller=SubmitController]').scope().$storage.x);
 // };
-
 
 // Save Form Input to LocalStorage
 //$scope.saveUserInputToDisplay = function () {
