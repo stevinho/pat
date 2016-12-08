@@ -1,9 +1,25 @@
-/*
- * Controller - submit.controller.js
- * Description:
- * Depedencies: 'ngStore': https://github.com/gsklee/ngStorage
- * Author: Steven Bartels
- * Date: 2016-11-25
+/**
+ * Copyright (C) 2016 Steven Bartels
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @name: SubmitRequestControllerModule
+ * @description: controller for the view "submit travel request" (1), displays data and communicates with Bonita BPM-Server
+ * @dependency: ngBonita, ngStorage (see github-repository for references)
+ *
+ * @author: Steven Bartels
  */
 
 (function (angular) {
@@ -27,12 +43,12 @@
 
         // Ensure we have a valid Bonita session & load resources
         bonitaAuthentication
-            .login('walter.bates', 'bpm') //id:4
+            .login('walter.bates', 'bpm')
             .then(submitUserActions());
 
 
         //////////////
-        function submitUserActions() { // (session)
+        function submitUserActions() {
 
             //if not checked, false. If user checks, then true.
             $scope.hotelNeeded = false;
@@ -54,17 +70,14 @@
                     }
                 };
 
-                //$scope.msg = 'Data sent: '+ JSON.stringify(requestPayload);
-                $scope.msg = 'Data sent: ' + JSON.stringify($scope.requestPayload);
-
-                /* Step 1
+                /**
+                 * Step 1
                  * ProcessDataOp.getProcessId() (factory, processDataOp.service.js)
                  * @api: /bonita/API/bpm/process
                  * @description: fragt/ruft Bonita BPM nach installierten Prozessen auf und speichert die "processId" ab (/API/bpm/..)
                  * .success = bei Erfolg Aufruf der (POST-)Methode ProcessDataOp.setProcessIdInUrl
                  * .error   = bei Misserfolg Ausgabe des Fehlercodes
                  * @return: HTTP-GET-Response mit einem JSON-Objekt des deployten Business Process, das ProcessId enthält
-                 * TODO: .success und .error umändern in .then!
                  * https://docs.angularjs.org/api/ng/service/$http#deprecation-notice
                  * http://stackoverflow.com/questions/16385278/angular-httppromise-difference-between-success-error-methods-and-thens-a
                  */
@@ -75,18 +88,20 @@
                         $scope.processId = data;
                         console.log("getProcessId -- ok: " + $scope.processId[0].id);
 
-                        /* Step 2
+                        /**
+                         * Step 2
                          * ProcessDataOp.setProcessIdInUrl(id, payload) (factory, processDataOp.service.js)
                          * @api: /bonita/API/bpm/process/:id/instantiation
                          * @description: POST-Request an Bonita BPM mit der spezifischen ProcessId sowie dem notwendigen Request-Payload
-                         * @params: id = processId; payload = Eingabedaten des User, die Attributen des Bonta Business Data Model zugewiesen werden
+                         * @params id: processId[0].id
+                         * @param payload: Eingabedaten des User, die Attributen des Bonta Business Data Model zugewiesen werden
                          * @return: gibt Id des erstellten Case innerhalb der BonitaBPM aus (CaseId)
                          */
                         ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
                             .success(function (data) {
                                 console.log("ProcessDataOp.setProcessId -- ok");
 
-                                // speichert die CaseId aus des POST-Response (Antwort)
+                                // speichert die CaseId aus der POST-Response (Antwort)
                                 CASEID = data.caseId;
 
                                 // caseId in URL einsetzen
@@ -105,23 +120,6 @@
                         $scope.status = 'Unable to load data (getProccessId): ' + error.message;
                     });
             }; // end - submit.function
-        } //end - handleUserAction.function
+        } //end - submitUserActions.function
     } // end SubmitFunction
 })(angular);
-
-
-// Save Form Input to LocalStorage
-//$scope.saveUserInputToDisplay = function () {
-//     $scope.$storage.DepDate      = $scope.departureDate;
-//     $scope.$storage.NumberOfNigh = $scope.numberOfNights;
-//     $scope.$storage.HotelNeeded  = $scope.hotelNeeded;
-//     $scope.$storage.Destination  = $scope.destination;
-//     $scope.$storage.Reason       = $scope.reason;
-// };
-
-
-// var CASEID = 7;
-// angular.element('[ng-controller=SubmitController]').scope().write = function () {
-//     angular.element('[ng-controller=SubmitController]').scope().$storage.x = CASEID;
-//     console.log("$scope.write()" + angular.element('[ng-controller=SubmitController]').scope().$storage.x);
-// };

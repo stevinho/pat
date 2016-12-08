@@ -1,10 +1,35 @@
+<!--/**
+* Copyright (C) 2016 Steven Bartels
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/-->
+
+<!--/**
+* @name: Questionnaire 1
+* @description: view to display questionnaire after user experienced the first process model
+*
+* @author: Steven Bartels
+*/-->
+
 <!DOCTYPE html>
 
+<!-- mark as angular-app -->
 <html ng-app="pat"> <!-- SCOPE pat -->
 <head>
     <meta charset="utf8"/>
     <title>PAT - Process Acceptance Testing</title>
 
+    <!-- SurveyJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 
     <!-- Style -->
@@ -51,7 +76,6 @@
 </head>
 
 <body>
-
 <div class="page-header" style="text-align: center">
     <h3>Questionnaire 1</h3>
     <h4>Experiment 1 - Mechanical Turk</h4>
@@ -64,98 +88,109 @@
 
 <script>
 
+    // var to send data back to jatos
     var resultDataInJason;
 
+    // code will be executed after jatos has been loaded - mandatory
     jatos.onLoad(function () {
+
+        // survey.js -- displays Q&A and handles user actions, all rows are required
         Survey.Survey.cssType = "bootstrap";
         var survey            = new Survey.Survey(
-                {goNextPageAutomatic: true,
-                    pages: [{
+                {
+                    goNextPageAutomatic  : true,
+                    pages                : [{
                         questions: [{
-                            type: "matrix",
-                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            type            : "matrix",
+                            columns         : [{value: 1, text: "yes"}, {value: 2, text: "no"}],
                             isAllRowRequired: true,
-                            isRequired: true,
-                            name: "Feeling",
-                            rows: [{
+                            isRequired      : true,
+                            name            : "Feeling",
+                            rows            : [{
                                 value: "felt good",
-                                text: "I felt good while executing the travel request."
+                                text : "I felt good while executing the travel request."
                             }, {
                                 value: "informed",
-                                text: "I felt informed about the travel request."
+                                text : "I felt informed about the travel request."
                             }, {value: "included", text: "I felt included into the process."}, {
                                 value: "annoyed",
-                                text: "This travel request is annoying."
+                                text : "This travel request is annoying."
                             }, {value: "unpleased", text: "This travel request is unpleasant."}, {
                                 value: "insecure",
-                                text: "I felt insecure."
+                                text : "I felt insecure."
                             }, {value: "laborious", text: "This travel request is laborious."}, {
                                 value: "stressful",
-                                text: "This travel request is stressful."
+                                text : "This travel request is stressful."
                             }, {value: "angry", text: "I got angry."}],
-                            title: "What did you feel during the process?"
+                            title           : "What did you feel during the process?"
                         }, {
-                            type: "matrix",
-                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            type            : "matrix",
+                            columns         : [{value: 1, text: "yes"}, {value: 2, text: "no"}],
                             isAllRowRequired: true,
-                            isRequired: true,
-                            name: "Thinking",
-                            rows: [{
+                            isRequired      : true,
+                            name            : "Thinking",
+                            rows            : [{
                                 value: "useful",
-                                text: "I think this travel request is useful."
+                                text : "I think this travel request is useful."
                             }, {value: "complicated", text: "This travel request is complicated."}, {
                                 value: "time",
-                                text: "Executing this travel request takes time."
+                                text : "Executing this travel request takes time."
                             }, {value: "reasonable", text: "This travel request is reasonable."}, {
                                 value: "important",
-                                text: "I think this travel request is important."
+                                text : "I think this travel request is important."
                             }, {value: "cumbersome", text: "This travel request is cumbersome."}, {
                                 value: "satisfied",
-                                text: "I am satisfied with the results."
+                                text : "I am satisfied with the results."
                             }],
-                            title: "What did you think during the process?"
+                            title           : "What did you think during the process?"
                         }, {
-                            type: "matrix",
-                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            type            : "matrix",
+                            columns         : [{value: 1, text: "yes"}, {value: 2, text: "no"}],
                             isAllRowRequired: true,
-                            isRequired: true,
-                            name: "Executing",
-                            rows: [{
+                            isRequired      : true,
+                            name            : "Executing",
+                            rows            : [{
                                 value: "keep",
-                                text: "I would like to keep this travel request process."
+                                text : "I would like to keep this travel request process."
                             }, {value: "improvement", text: "I would like to suggest an improvement"}, {
                                 value: "again",
-                                text: "I would like to execute the process again."
+                                text : "I would like to execute the process again."
                             }, {
                                 value: "delegate",
-                                text: "I would like to delegate the travel request task"
+                                text : "I would like to delegate the travel request task"
                             }, {
                                 value: "get rid",
-                                text: "I would like to get rid of this travel request process."
+                                text : "I would like to get rid of this travel request process."
                             }, {
                                 value: "complain",
-                                text: "I would like to complain about the travel request process."
+                                text : "I would like to complain about the travel request process."
                             }, {value: "prefer", text: "I would prefer a different travel request process."}],
-                            title: "What did you think about executing the process?"
+                            title           : "What did you think about executing the process?"
                         }]
                     }],
                     showNavigationButtons: true,
-                    showPageTitles: false,
-                    showTitle: false,
-                    storeOthersAsComment: false
+                    showPageTitles       : false,
+                    showTitle            : false,
+                    storeOthersAsComment : false
                 });
+        // handle the data after survey has been filled out
         survey.onComplete.add(function (s) {
             resultDataInJason = JSON.stringify(s.data);
+
+            // test output
             console.log("The results are:" + JSON.stringify(s.data));
         });
-        //survey.showNavigationButtons = false;       // no submit-button from surveyjs
-        survey.goNextPageAutomatic = true;        // after fullfilling questionnaire - finished
+        //survey.showNavigationButtons = false;      no submit-button from surveyjs
+        //survey.goNextPageAutomatic = true;        // after fullfilling questionnaire - finished
         survey.render("SurveyExperiment1");
 
+        /**
+         * js-function for jatos
+         * click on button to send back data to jatos, which will be stored in a H2-database
+         * afterwards the next component will be started
+         */
         $("#nextButton").click(function () {
-            // Send back some result data to JATOS
             console.log("The results are:" + resultDataInJason);
-
             jatos.submitResultData(resultDataInJason, jatos.startNextComponent);
         });
     });
@@ -168,6 +203,5 @@
         <button type="submit" id="nextButton" class="btn btn-primary">Next step</button>
     </div>
 </div>
-
 </body>
 </html> <!-- SCOPE END pat-->

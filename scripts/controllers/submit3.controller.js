@@ -1,9 +1,25 @@
-/*
- * Controller - submit.controller.js
- * Description:
- * Depedencies: 'ngStore': https://github.com/gsklee/ngStorage
- * Author: Steven Bartels
- * Date: 2016-11-25
+/**
+ * Copyright (C) 2016 Steven Bartels
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @name: SubmitRequest3ControllerModule
+ * @description: controller for the view "submit travel request - number of nights" (3), displays data and communicates with Bonita BPM-Server
+ * @dependency: ngBonita, ngStorage (see github-repository for references)
+ *
+ * @author: Steven Bartels
  */
 
 (function (angular) {
@@ -35,113 +51,21 @@
         //////////////
         function saveUserActions() {
 
-            //if not checked, false. If user checks, then true.
-            //$scope.hotelNeeded = false;
-
             // Form submit handler (button)
             $scope.submit = function () {
 
                 // if submit-button has been clicked
                 $scope.submitted = true;
 
-
+                // output just for testing
                 DEPDATE = $scope.$storage.DEPDATE;
                 console.log("DEPDATE - controller3: " + DEPDATE);
 
+                // save user input (ng-model: numberOfNights) into localStorage variable NUMBEROFNIGHTS -- will be used later
                 $scope.$storage.NUMBEROFNIGHTS = $scope.numberOfNights;
-                NUMBEROFNIGHTS = $scope.$storage.NUMBEROFNIGHTS;
+                NUMBEROFNIGHTS                 = $scope.$storage.NUMBEROFNIGHTS;
                 console.log("NUMBEROFNIGHTS - controller3: " + NUMBEROFNIGHTS);
-
-
             }; // end - submit.function
-        } //end - handleUserAction.function
+        } //end - saveUserActions.function
     } // end SubmitFunction
 })(angular);
-
-
-// Save Form Input to LocalStorage
-//$scope.saveUserInputToDisplay = function () {
-//     $scope.$storage.DepDate      = $scope.departureDate;
-//     $scope.$storage.NumberOfNigh = $scope.numberOfNights;
-//     $scope.$storage.HotelNeeded  = $scope.hotelNeeded;
-//     $scope.$storage.Destination  = $scope.destination;
-//     $scope.$storage.Reason       = $scope.reason;
-// };
-
-
-// var CASEID = 7;
-// angular.element('[ng-controller=SubmitController]').scope().write = function () {
-//     angular.element('[ng-controller=SubmitController]').scope().$storage.x = CASEID;
-//     console.log("$scope.write()" + angular.element('[ng-controller=SubmitController]').scope().$storage.x);
-// };
-
-// Save Form Input to LocalStorage
-//$scope.saveUserInputToDisplay = function () {
-//     $scope.$storage.DepDate      = $scope.departureDate;
-//     $scope.$storage.NumberOfNigh = $scope.numberOfNights;
-//     $scope.$storage.HotelNeeded  = $scope.hotelNeeded;
-//     $scope.$storage.Destination  = $scope.destination;
-//     $scope.$storage.Reason       = $scope.reason;
-// };
-
-// // Form Input -- get the data from the form and update the request payload for the POST-request
-// $scope.requestPayload = {
-//     "travelRequestInput": {
-//         "departureDate" : $scope.departureDate,
-//         "numberOfNights": $scope.numberOfNights,
-//         "hotelNeeded"   : $scope.hotelNeeded, //$scope.hotelNeeded = { value : true }; --> returns true/false
-//         "destination"   : $scope.destination,
-//         "reason"        : $scope.reason
-//     }
-// };
-
-//$scope.msg = 'Data sent: '+ JSON.stringify(requestPayload);
-//$scope.msg = 'Data sent: ' + JSON.stringify($scope.requestPayload);
-
-/* Step 1
- * ProcessDataOp.getProcessId() (factory, processDataOp.service.js)
- * @api: /bonita/API/bpm/process
- * @description: fragt/ruft Bonita BPM nach installierten Prozessen auf und speichert die "processId" ab (/API/bpm/..)
- * .success = bei Erfolg Aufruf der (POST-)Methode ProcessDataOp.setProcessIdInUrl
- * .error   = bei Misserfolg Ausgabe des Fehlercodes
- * @return: HTTP-GET-Response mit einem JSON-Objekt des deployten Business Process, das ProcessId enthält
- * TODO: .success und .error umändern in .then!
- * https://docs.angularjs.org/api/ng/service/$http#deprecation-notice
- * http://stackoverflow.com/questions/16385278/angular-httppromise-difference-between-success-error-methods-and-thens-a
- */
-// ProcessDataOp.getProcessId()
-//     .success(function successCallback(data) {
-//
-//         // processID
-//         $scope.processId = data;
-//         console.log("getProcessId -- ok: " + $scope.processId[0].id);
-//
-//         /* Step 2
-//          * ProcessDataOp.setProcessIdInUrl(id, payload) (factory, processDataOp.service.js)
-//          * @api: /bonita/API/bpm/process/:id/instantiation
-//          * @description: POST-Request an Bonita BPM mit der spezifischen ProcessId sowie dem notwendigen Request-Payload
-//          * @params: id = processId; payload = Eingabedaten des User, die Attributen des Bonta Business Data Model zugewiesen werden
-//          * @return: gibt Id des erstellten Case innerhalb der BonitaBPM aus (CaseId)
-//          */
-//         ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
-//             .success(function (data) {
-//                 console.log("setProcessId -- ok");
-//
-//                 // speichert die CaseId aus des POST-Response (Antwort)
-//                 CASEID = data.caseId;
-//
-//                 // caseId in URL einsetzen
-//                 // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
-//                 ProcessDataOp.setCaseIdInUrl(CASEID);
-//
-//                 // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
-//                 $scope.$storage.saveCaseIdToStorage = CASEID;
-//                 console.log("STORAGE caseId: " + $scope.$storage.saveCaseIdToStorage);
-//             })
-//             .error(function (error) {
-//                 $scope.status = 'Unable to set process id: ' + error.message;
-//             })
-//     })
-//     .error(function errorCallback(error) {
-//         $scope.status = 'Unable to load data (getProccessId): ' + error.message;
-//     });
