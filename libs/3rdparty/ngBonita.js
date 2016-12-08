@@ -21,9 +21,11 @@
  *
  * @author Philippe Ozil
  * @author Rodrigue Le Gall
+ *
+ * NOTE: Updated with comments from Steven Bartels, 2016-10-12
  */
 angular
-	.module('ngBonita', [ 'ngResource' ]);
+    .module('ngBonita', ['ngResource']);
 
 'use strict';
 
@@ -51,49 +53,49 @@ angular
              * POST Method to use login service
              */
             $http({
-                method  : 'POST',
-                url     :  bonitaConfig.getBonitaUrl() + '/loginservice',
-                data    :  bonitaUtils.serializeData({
-                    username : username,
-                    password : password,
-                    redirect : false
+                method : 'POST',
+                url    : bonitaConfig.getBonitaUrl() + '/loginservice',
+                data   : bonitaUtils.serializeData({
+                    username: username,
+                    password: password,
+                    redirect: false
                 }),
-                headers : {
-                    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 }
             })
                 .success(function () {
-                $log
-                    .log('ngBonita.js -- bonitaAuthentication.login success');
+                    $log
+                        .log('ngBonita.js -- bonitaAuthentication.login success');
 
 
-                // Retrieve current session to get user id
-                BonitaSession
-                    .getCurrent()
-                    .$promise
-                    .then(function (session) {
-                        if (typeof session.user_id === 'undefined') {
-                            deferred.reject('ngBonita.js -- No active session found');
-                        } else {
-                            // Save basic session data
-                            bonitaConfig.setUsername(session.user_name);        // no active session - setUsername(session.user_name)
-                            bonitaConfig.setUserId(session.user_id);            // no acitve session - setUserId(session.user_id)
-                            bonitaAuthentication.isLogged = true;
-                            deferred.resolve(session);
-                        }
-                });
-            })
+                    // Retrieve current session to get user id
+                    BonitaSession
+                        .getCurrent()
+                        .$promise
+                        .then(function (session) {
+                            if (typeof session.user_id === 'undefined') {
+                                deferred.reject('ngBonita.js -- No active session found');
+                            } else {
+                                // Save basic session data
+                                bonitaConfig.setUsername(session.user_name);        // no active session - setUsername(session.user_name)
+                                bonitaConfig.setUserId(session.user_id);            // no acitve session - setUserId(session.user_id)
+                                bonitaAuthentication.isLogged = true;
+                                deferred.resolve(session);
+                            }
+                        });
+                })
                 .error(function (data, status, headers, config) {
                     $log.log('ngBonita.js -- BonitaAuthentication.login failure response ' + status);
                     $log.log('ngBonita.js -- Bonita URL: ' + bonitaConfig.getBonitaUrl());
                     bonitaAuthentication.isLogged = false;
                     deferred.reject({
-                        data    :   data,
-                        status  :   status,
-                        headers :   headers,
-                        config  :   config
+                        data   : data,
+                        status : status,
+                        headers: headers,
+                        config : config
                     });
-            });
+                });
 
             return deferred.promise;
         };
@@ -128,13 +130,13 @@ angular
             var deferred = $q.defer();
 
             $http({
-                method  : 'GET',
-                url     : bonitaConfig.getBonitaUrl() + '/logoutservice',
-                data    : bonitaUtils.serializeData({
-                    redirect : false
+                method : 'GET',
+                url    : bonitaConfig.getBonitaUrl() + '/logoutservice',
+                data   : bonitaUtils.serializeData({
+                    redirect: false
                 }),
-                headers : {
-                    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                 }
             })
                 .success(function () {
@@ -148,12 +150,12 @@ angular
                     $log.log('ngBonita.js -- BonitaAuthentication.logout failure response ' + status);
                     bonitaAuthentication.isLogged = false;
                     deferred.reject({
-                        data    : data,
-                        status  : status,
-                        headers : headers,
-                        config  : config
+                        data   : data,
+                        status : status,
+                        headers: headers,
+                        config : config
                     });
-            });
+                });
 
             return deferred.promise;
         };
@@ -165,21 +167,21 @@ angular
 /**********************************************************************************************************************
  * PROVIDER bonitaConfig
  *
- * bonitaConfig:    User-Daten erhalten/manipulieren (url, userId, userName, defaultPager)
+ * bonitaConfig: get and/or manipulate user-data (url, userId, userName, defaultPager)
  */
 'use strict';
 
 angular
     .module('ngBonita')
     .provider('bonitaConfig', function () {
-        var bonitaUrl = 'http://localhost:8080/bonita';
+        var bonitaUrl    = 'http://localhost:8080/bonita';
         var defaultPager = {
-            p : 0,
-            c : 10
+            p: 0,
+            c: 10
         };
 
-        var bonitaUserId    = null;
-        var bonitaUsername  = null;
+        var bonitaUserId   = null;
+        var bonitaUsername = null;
 
         /**
          * Configure the Bonita application URL (must include application name
@@ -246,20 +248,20 @@ angular
             };
 
             return api;
-	    };
+        };
     }); // END - PROVIDER bonitaConfig
 
 
 /**********************************************************************************************************************
  * PROVIDER bonitaUtils
  *
- * bonitaUtils:
+ * bonitaUtils: pagination
  */
 'use strict';
 
 angular
     .module('ngBonita')
-    .factory('bonitaUtils', function ($http,bonitaConfig) {
+    .factory('bonitaUtils', function ($http, bonitaConfig) {
 
         var api = {};
 
@@ -271,26 +273,25 @@ angular
         var paginateResponse = function (data, headersGetter) {
 
             // Parse pagination header
-            var strContentRange = headersGetter()['content-range'];
-            var arrayContentRange = strContentRange ? strContentRange.split('/') :[ bonitaConfig.getDefaultPager().p + '-' + bonitaConfig.getDefaultPager().c];
+            var strContentRange      = headersGetter()['content-range'];
+            var arrayContentRange    = strContentRange ? strContentRange.split('/') : [bonitaConfig.getDefaultPager().p + '-' + bonitaConfig.getDefaultPager().c];
             var arrayIndexNumPerPage = arrayContentRange[0].split('-');
 
             // Assemble response data with pagination
             return {
-                items       : angular.fromJson(data),
-                pageIndex   : Number(arrayIndexNumPerPage[0]),
-                pageSize    : Number(arrayIndexNumPerPage[1]),
-                totalCount  : Number(arrayContentRange[1])
+                items     : angular.fromJson(data),
+                pageIndex : Number(arrayIndexNumPerPage[0]),
+                pageSize  : Number(arrayIndexNumPerPage[1]),
+                totalCount: Number(arrayContentRange[1])
             };
         };
 
         api.transformPaginateResponse = function () {
-            return [ paginateResponse ].concat($http.defaults.transformResponse);
+            return [paginateResponse].concat($http.defaults.transformResponse);
         };
 
         /**
          * Serializes data into an URI format (credit: Sudhir from stackoverflow)
-         * TODO: Was für "data" wird hier verarbeitet?
          */
         api.serializeData = function (data) {
 
@@ -326,7 +327,7 @@ angular
 /**********************************************************************************************************************
  * FACTORY ArchivedCaseDocument
  *
- * ArchivedCaseDocument: Zugriff auf "erledigte/archivierte" Prozessdokumente aus dem Bonita-Workflow
+ * ArchivedCaseDocument: access to executed/archived processs documents (bonita workflow)
  */
 'use strict';
 
@@ -339,23 +340,23 @@ angular
     .factory('ArchivedCaseDocument', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-                id : '@id'
+                id: '@id'
             },
             bonitaConfig.getDefaultPager());
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/archivedCaseDocument/:id', data, {
-            getUploadedByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                            return [ 'submittedBy=' + bonitaConfig.getUserId() ];
-                        }
+            getUploadedByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['submittedBy=' + bonitaConfig.getUserId()];
+                    }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             },
-            search : {
-                method : 'GET',
-                transformResponse : bonitaUtils.transformPaginateResponse()
+            search                  : {
+                method           : 'GET',
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY ArchivedCaseDocument
@@ -364,7 +365,7 @@ angular
 /**********************************************************************************************************************
  * FACTORY ArchivedHumanTask
  *
- * ArchivedHumanTask: Zugriff auf "erledigte" Human Task Instanzen (HIT)
+ * ArchivedHumanTask: access to executed Human Task Instances
  */
 'use strict';
 
@@ -376,19 +377,19 @@ angular
     .factory('ArchivedHumanTask', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-            id : '@id',
+            id: '@id',
             o : 'reached_state_date ASC'
         }, bonitaConfig.getDefaultPager());
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/archivedHumanTask/:id', data, {
-            getCompletedByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                            return [ 'assigned_id=' + bonitaConfig.getUserId() ];
+            getCompletedByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['assigned_id=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY ArchivedHumanTask
@@ -396,8 +397,6 @@ angular
 
 /**********************************************************************************************************************
  * FACTORY ArchivedProcessInstance
- *
- * ArchivedProcessInstance: Zugriff auf "erledigte/archivierte" Fälle (Aufgaben)
  */
 'use strict';
 
@@ -409,19 +408,19 @@ angular
     .factory('ArchivedProcessInstance', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-            id : '@id'
+                id: '@id'
             }, bonitaConfig.getDefaultPager()
         );
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/archivedCase/:id', data, {
-            getStartedByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                        return [ 'started_by=' + bonitaConfig.getUserId() ];
+            getStartedByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['started_by=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY ArchivedProcessInstance
@@ -429,8 +428,6 @@ angular
 
 /**********************************************************************************************************************
  * FACTORY BonitaSession
- *
- * BonitaSession: Zugriff auf Informationen der Bonita-Session
  */
 'use strict';
 
@@ -442,8 +439,8 @@ angular
     .module('ngBonita')
     .factory('BonitaSession', function ($resource, bonitaConfig) {
         return $resource(bonitaConfig.getBonitaUrl() + '/API/system/session/unused', {}, {
-            getCurrent : {
-                method : 'GET'
+            getCurrent: {
+                method: 'GET'
             }
         });
     }); // END - FACTORY BonitaSession
@@ -452,51 +449,51 @@ angular
 /**********************************************************************************************************************
  * FACTORY BusinessData
  *
- * BusinessData: Zugriff auf Informationen der Bonita-Session
+ * BusinessData: access data from bdm via storageId
  */
 'use strict';
 
 angular
-	.module('ngBonita')
-	.factory('BusinessData', function ($resource, bonitaConfig, bonitaUtils) {
+    .module('ngBonita')
+    .factory('BusinessData', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-			businessDataType : '@businessDataType',
-			q                : '@queryName',
-			f                : '@fields',
-			persistanceId    : '@persistenceId'
+                businessDataType: '@businessDataType',
+                q               : '@queryName',
+                f               : '@fields',
+                persistanceId   : '@persistenceId'
 
-		    }, bonitaConfig.getDefaultPager()
+            }, bonitaConfig.getDefaultPager()
         );
-		
-		//$resource(url,[paramDefaults],[actions],options);		
-		return $resource(
-			bonitaConfig.getBonitaUrl() + '/API/bdm/businessData/:businessDataType/:persistenceId', // url
-			data, //paramDefaults
-			{
-				getDataQuery: {
-					method: 'GET',
-					params: {
-						q: function () {
-							return data.q;      //@queryName
-						},
-						f: function () {
-							return data.f;      //@fields
-						}
-					},
-					transformResponse: bonitaUtils.transformPaginateResponse()
-				},// actions
-				getBusinessData: {
-					method: 'GET'					
-				}
-			});
-	}); // END - FACTORY BusinessData
+
+        //$resource(url,[paramDefaults],[actions],options);
+        return $resource(
+            bonitaConfig.getBonitaUrl() + '/API/bdm/businessData/:businessDataType/:persistenceId', // url
+            data, //paramDefaults
+            {
+                getDataQuery   : {
+                    method           : 'GET',
+                    params           : {
+                        q: function () {
+                            return data.q;      //@queryName
+                        },
+                        f: function () {
+                            return data.f;      //@fields
+                        }
+                    },
+                    transformResponse: bonitaUtils.transformPaginateResponse()
+                },// actions
+                getBusinessData: {
+                    method: 'GET'
+                }
+            });
+    }); // END - FACTORY BusinessData
 
 
 /**********************************************************************************************************************
  * FACTORY CaseDocument
  *
- * CaseDocument: Zugriff auf Prozessdokumente von Bonita
+ * CaseDocument: access process documents
  */
 'use strict';
 
@@ -509,23 +506,23 @@ angular
     .factory('CaseDocument', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-            id : '@id'
+                id: '@id'
             }, bonitaConfig.getDefaultPager()
         );
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/caseDocument/:id', data, {
-            getUploadedByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                        return [ 'submittedBy=' + bonitaConfig.getUserId() ];
+            getUploadedByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['submittedBy=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             },
-            search : {
-                method : 'GET',
-                transformResponse : bonitaUtils.transformPaginateResponse()
+            search                  : {
+                method           : 'GET',
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY CaseDocument
@@ -534,7 +531,6 @@ angular
 /**********************************************************************************************************************
  * FACTORY HumanTask
  *
- * HumanTask: Zugriff auf HumanTasks von Bonita
  */
 'use strict';
 
@@ -545,20 +541,20 @@ angular
     .module('ngBonita')
     .factory('HumanTask', function ($resource, bonitaConfig, bonitaUtils) {
         var data = angular.extend({
-                id  : '@id',
-                o   : 'priority ASC'
+                id: '@id',
+                o : 'priority ASC'
             }, bonitaConfig.getDefaultPager()
         );
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/humanTask/:id', data, {
-            getFromCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                            return [ 'state=ready', 'user_id=' + bonitaConfig.getUserId() ];
+            getFromCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['state=ready', 'user_id=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY HumanTask
@@ -567,7 +563,6 @@ angular
 /**********************************************************************************************************************
  * FACTORY ProcessDefinition
  *
- * ProcessDefinition: Zugriff auf Prozessdefinitionen (Apps)
  */
 'use strict';
 
@@ -579,20 +574,20 @@ angular
     .factory('ProcessDefinition', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-                id  : '@id',
-                o   : 'displayName ASC'
+                id: '@id',
+                o : 'displayName ASC'
             }, bonitaConfig.getDefaultPager()
         );
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/process/:id', data, {
-            getStartableByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                            return [ 'user_id=' + bonitaConfig.getUserId() ];
+            getStartableByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['user_id=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY ProcessDefinition
@@ -601,7 +596,6 @@ angular
 /**********************************************************************************************************************
  * FACTORY ProcessInstance
  *
- * ProcessInstance: Zugriff auf Prozess-Instanzen (Cases)
  */
 'use strict';
 
@@ -613,19 +607,19 @@ angular
     .factory('ProcessInstance', function ($resource, bonitaConfig, bonitaUtils) {
 
         var data = angular.extend({
-                id : '@id'
+                id: '@id'
             }, bonitaConfig.getDefaultPager()
         );
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/bpm/case/:id', data, {
-            getStartedByCurrentUser : {
-                method : 'GET',
-                params : {
-                    f  : function () {
-                        return [ 'started_by=' + bonitaConfig.getUserId() ];
+            getStartedByCurrentUser: {
+                method           : 'GET',
+                params           : {
+                    f: function () {
+                        return ['started_by=' + bonitaConfig.getUserId()];
                     }
                 },
-                transformResponse : bonitaUtils.transformPaginateResponse()
+                transformResponse: bonitaUtils.transformPaginateResponse()
             }
         });
     }); // END - FACTORY ProcessInstance
@@ -634,7 +628,6 @@ angular
 /**********************************************************************************************************************
  * FACTORY User
  *
- * User: Zugriff auf den User
  */
 
 /**
@@ -647,6 +640,6 @@ angular
     .factory('User', function ($resource, bonitaConfig) {
 
         return $resource(bonitaConfig.getBonitaUrl() + '/API/identity/user/:id', {
-            id : '@id'
+            id: '@id'
         });
     }); // END - FACTORY User

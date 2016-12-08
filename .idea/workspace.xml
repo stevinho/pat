@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f39cd6ab-cdda-413e-af60-b7e9dcb87eec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/configs/bonita.conf.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/3rdparty/ngBonita.js" afterPath="$PROJECT_DIR$/libs/3rdparty/ngBonita.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/configs/cookie.conf.js" afterPath="$PROJECT_DIR$/scripts/configs/cookie.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/end_page.html" afterPath="$PROJECT_DIR$/views/end_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment1/questionnaire.html" afterPath="$PROJECT_DIR$/views/experiment1/questionnaire.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html" afterPath="$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment1/submitTravelRequest.html" afterPath="$PROJECT_DIR$/views/experiment1/submitTravelRequest.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/questionnaire_2.html" afterPath="$PROJECT_DIR$/views/experiment2/questionnaire_2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html" afterPath="$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html" afterPath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html" afterPath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html" afterPath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html" afterPath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html" afterPath="$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html" />
     </list>
     <ignored path="pat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,21 +39,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="questionnaire.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/experiment1/questionnaire.html">
+      <file leaf-file-name="cookie.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/configs/cookie.conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="160" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="173" selection-end-column="29" />
+            <state relative-caret-position="396">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="questionnaire_2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/questionnaire_2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questionnaire_2.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/experiment2/questionnaire_2.html">
+      <file leaf-file-name="reviewTravelRequest_2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitTravelRequest_departureDate.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitTravelRequest_destination.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitTravelRequest_hotelNeeded.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitTravelRequest_numberOfNights.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="159" column="53" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitTravelRequest_reason.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="end_page.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/end_page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="666">
+              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -65,14 +151,11 @@
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/1.submit.ctrl.js" />
         <option value="$PROJECT_DIR$/views/submitTravelRequest.html" />
-        <option value="$PROJECT_DIR$/scripts/configs/bonita.conf.js" />
-        <option value="$PROJECT_DIR$/scripts/configs/cookie.conf.js" />
         <option value="$PROJECT_DIR$/scripts/factory/bonitaLogin.factory.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/review.controller.js" />
         <option value="$PROJECT_DIR$/scripts/services/processDataOp.service.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/submit.controller.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/submit2.controller.js" />
-        <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/submit3.controller.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/submit4.controller.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/submit5.controller.js" />
@@ -81,17 +164,21 @@
         <option value="$PROJECT_DIR$/views/experiment1/survey_1.txt" />
         <option value="$PROJECT_DIR$/views/experiment1/survey_1.html" />
         <option value="$PROJECT_DIR$/libs/surveyjs/survey.ko.min.js" />
-        <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html" />
-        <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html" />
+        <option value="$PROJECT_DIR$/scripts/configs/bonita.conf.js" />
+        <option value="$PROJECT_DIR$/libs/3rdparty/ngBonita.js" />
+        <option value="$PROJECT_DIR$/views/experiment1/questionnaire.html" />
+        <option value="$PROJECT_DIR$/scripts/app.js" />
+        <option value="$PROJECT_DIR$/scripts/configs/cookie.conf.js" />
+        <option value="$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html" />
+        <option value="$PROJECT_DIR$/views/experiment1/submitTravelRequest.html" />
+        <option value="$PROJECT_DIR$/views/experiment2/questionnaire_2.html" />
         <option value="$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html" />
+        <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html" />
         <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html" />
+        <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html" />
         <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html" />
         <option value="$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html" />
         <option value="$PROJECT_DIR$/views/end_page.html" />
-        <option value="$PROJECT_DIR$/views/experiment1/submitTravelRequest.html" />
-        <option value="$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html" />
-        <option value="$PROJECT_DIR$/views/experiment1/questionnaire.html" />
-        <option value="$PROJECT_DIR$/views/experiment2/questionnaire_2.html" />
       </list>
     </option>
   </component>
@@ -223,7 +310,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3rdparty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,12 +443,12 @@
       <updated>1481033927514</updated>
       <workItem from="1481033928650" duration="653000" />
       <workItem from="1481038681007" duration="1997000" />
-      <workItem from="1481040981322" duration="39373000" />
+      <workItem from="1481040981322" duration="42614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42023000" />
+    <option name="totallyTimeSpent" value="45264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -394,14 +517,6 @@
     <entry file="file://$PROJECT_DIR$/scripts/controllers/main.js" />
     <entry file="file://$PROJECT_DIR$/scripts/controllers/1.submit.ctrl.js" />
     <entry file="file://$PROJECT_DIR$/views/submitTravelRequest.html" />
-    <entry file="file://$PROJECT_DIR$/scripts/configs/cookie.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/factory/bonitaLogin.factory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -437,38 +552,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/configs/bonita.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jatos/jatos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/3rdparty/ngBonita.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8190">
-          <caret line="455" column="3" selection-start-line="452" selection-start-column="3" selection-end-line="455" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/3rdparty/ngStorage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -562,14 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/experiment1/survey_1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -586,9 +661,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/libs/3rdparty/angular-local-storage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/3rdparty/ngStorage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/angular/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/bootstrap/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/jatos/jatos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/libs/surveyjs/survey.ko.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1152">
+        <state relative-caret-position="198">
           <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -596,92 +711,126 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html">
+    <entry file="file://$PROJECT_DIR$/libs/3rdparty/ngBonita.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+        <state relative-caret-position="4716">
+          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html">
+    <entry file="file://$PROJECT_DIR$/scripts/configs/bonita.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="83" column="10" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="78" column="28" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/end_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="70" column="11" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment1/submitTravelRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+        <state relative-caret-position="342">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/experiment1/questionnaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="160" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="173" selection-end-column="29" />
+        <state relative-caret-position="414">
+          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment1/reviewTravelRequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment1/submitTravelRequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/configs/cookie.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/experiment2/questionnaire_2.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/reviewTravelRequest_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_departureDate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_destination.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_hotelNeeded.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_numberOfNights.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="159" column="53" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/experiment2/submitTravelRequest_reason.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/end_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
           <folding />
         </state>
       </provider>

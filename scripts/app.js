@@ -30,7 +30,6 @@
 
                 // Config/Directive/Service
                 'ProcessDataOpModule',
-                'BonitaConfigModule',
                 'CookieConfModule',
 
                 // Controller
