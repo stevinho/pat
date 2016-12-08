@@ -70,49 +70,91 @@
     jatos.onLoad(function () {
         Survey.Survey.cssType = "bootstrap";
         var survey            = new Survey.Survey(
-                {
-                    pages                                          : [{
-                        name     : "page1",
+                {goNextPageAutomatic: true,
+                    pages: [{
                         questions: [{
-                            type      : "radiogroup",
-                            choices   : [{
-                                value: "value1",
-                                text : "I felt good and understood the process immediately."
-                            }, {value: "value2", text: "I felt insecure and the process was miserly explained."}],
+                            type: "matrix",
+                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            isAllRowRequired: true,
                             isRequired: true,
-                            name      : "What did you feel during the execution of the process?"
-                        }, {
-                            type      : "radiogroup",
-                            choices   : [{
-                                value: "value1",
-                                text : "The process design is practical and well designed."
-                            }, {value: "value2", text: "The process design is awfully implemented and complicated."}],
-                            isRequired: true,
-                            name      : "What did you think during the process?"
-                        }, {
-                            type      : "radiogroup",
-                            choices   : [{
-                                value: "value1",
-                                text : "I would like to keep this travel request process."
+                            name: "Feeling",
+                            rows: [{
+                                value: "felt good",
+                                text: "I felt good while executing the travel request."
                             }, {
-                                value: "value2",
-                                text : "I would like to complain about the travel request process and prefer a different possibility."
-                            }],
+                                value: "informed",
+                                text: "I felt informed about the travel request."
+                            }, {value: "included", text: "I felt included into the process."}, {
+                                value: "annoyed",
+                                text: "This travel request is annoying."
+                            }, {value: "unpleased", text: "This travel request is unpleasant."}, {
+                                value: "insecure",
+                                text: "I felt insecure."
+                            }, {value: "laborious", text: "This travel request is laborious."}, {
+                                value: "stressful",
+                                text: "This travel request is stressful."
+                            }, {value: "angry", text: "I got angry."}],
+                            title: "What did you feel during the process?"
+                        }, {
+                            type: "matrix",
+                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            isAllRowRequired: true,
                             isRequired: true,
-                            name      : "What do you think about executing the process again?"
+                            name: "Thinking",
+                            rows: [{
+                                value: "useful",
+                                text: "I think this travel request is useful."
+                            }, {value: "complicated", text: "This travel request is complicated."}, {
+                                value: "time",
+                                text: "Executing this travel request takes time."
+                            }, {value: "reasonable", text: "This travel request is reasonable."}, {
+                                value: "important",
+                                text: "I think this travel request is important."
+                            }, {value: "cumbersome", text: "This travel request is cumbersome."}, {
+                                value: "satisfied",
+                                text: "I am satisfied with the results."
+                            }],
+                            title: "What did you think during the process?"
+                        }, {
+                            type: "matrix",
+                            columns: [{value: 1, text: "yes"}, {value: 2, text: "no"}],
+                            isAllRowRequired: true,
+                            isRequired: true,
+                            name: "Executing",
+                            rows: [{
+                                value: "keep",
+                                text: "I would like to keep this travel request process."
+                            }, {value: "improvement", text: "I would like to suggest an improvement"}, {
+                                value: "again",
+                                text: "I would like to execute the process again."
+                            }, {
+                                value: "delegate",
+                                text: "I would like to delegate the travel request task"
+                            }, {
+                                value: "get rid",
+                                text: "I would like to get rid of this travel request process."
+                            }, {
+                                value: "complain",
+                                text: "I would like to complain about the travel request process."
+                            }, {value: "prefer", text: "I would prefer a different travel request process."}],
+                            title: "What did you think about executing the process?"
                         }]
-                    }], showPageTitles: false, storeOthersAsComment: false
+                    }],
+                    showNavigationButtons: true,
+                    showPageTitles: false,
+                    showTitle: false,
+                    storeOthersAsComment: false
                 });
-
         survey.onComplete.add(function (s) {
             resultDataInJason = JSON.stringify(s.data);
+            console.log("The results are:" + JSON.stringify(s.data));
         });
-        survey.showNavigationButtons = false;   // no submit-button from surveyjs
-        survey.goNextPageAutomatic   = true;      // after fullfilling questionnaire - finished
+        //survey.showNavigationButtons = false;       // no submit-button from surveyjs
+        survey.goNextPageAutomatic = true;        // after fullfilling questionnaire - finished
         survey.render("SurveyExperiment2");
 
         $("#nextButton").click(function () {
-            // Send back result data to JATOS
+            // Send back some result data to JATOS
             console.log("The results are:" + resultDataInJason);
 
             jatos.submitResultData(resultDataInJason, jatos.startNextComponent);
