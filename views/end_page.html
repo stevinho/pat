@@ -1,97 +1,75 @@
-<!-- NOTE: files have to be in directory /copyBonita/submitTravelRequest.html .. because of JATOS -->
-
 <!DOCTYPE html>
 
 <html ng-app="pat"> <!-- SCOPE pat -->
 <head>
     <meta charset="utf8"/>
     <title>PAT - Process Acceptance Testing</title>
-    <!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
-    <!-- Latest compiled and minified CSS -->
+
+    <!-- Style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="/study_assets/copyBonita/libs/jquery-3.1.1.min.js"></script>
+    <script src="/study_assets/pat/libs/jquery/jquery-3.1.1.min.js"></script>
 
     <!-- JATOS -->
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/jatos.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/jatos/jatos.js"></script>
 
     <!-- AngularJS -->
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-animate.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-cookies.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-loader.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-resource.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-route.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-sanitize.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/angular-local-storage.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-cookies.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-sanitize.js"></script>
 
     <!-- 3rd Party -->
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/ngBonita.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/libs/ngStorage.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/3rdparty/ngBonita.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/libs/3rdparty/ngStorage.js"></script>
 
     <!-- Controller -->
-    <script type="text/javascript" src="/study_assets/copyBonita/submitForm/submit.controller.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/reviewForm/review.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/review.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/review2.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit2.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit3.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit4.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit5.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit6.controller.js"></script>
 
     <!-- Service/Factory -->
-    <script type="text/javascript" src="/study_assets/copyBonita/service/processDataOp.service.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/reviewForm/review.service.js"></script>
-
-    <!-- Directives -->
-    <script type="text/javascript" src="/study_assets/copyBonita/directive/request.directive.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/services/processDataOp.service.js"></script>
 
     <!-- Config -->
-    <script type="text/javascript" src="/study_assets/copyBonita/config/bonita.conf.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/config/cookie.conf.js"></script>
-    <script type="text/javascript" src="/study_assets/copyBonita/config/route.conf.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/configs/bonita.conf.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/configs/cookie.conf.js"></script>
 
     <!-- Local -->
-    <script type="text/javascript" src="/study_assets/copyBonita/app.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/app.js"></script>
 </head>
 
-<body ng-controller="SubmitController"> <!-- Scope SubmitController -->
+<body> <!-- no controller implemeneted -->
 
 <script>
     // What todo when jatos.js is finished initializing
     jatos.onLoad(function () {
 
-        //BLOCK 1
         // Wait for submitButton to be pressed and then start next component
         $("#finishButton").click(function () {
             jatos.endStudy();
         });
 
-        /*
-         // BLOCK 2
-         // Kann für den Fragebogen am Ende genutzt werden, um die Angaben durch Teilnehmer auszuwerten
-         // Wait for any button to be pressed and then submit data and start next component
-         $(document).keydown(function(event) {
-         // Send back some result data to JATOS
-         var componentResultData = "These are some very scientific result data.";
-         jatos.submitResultData(componentResultData, jatos.startNextComponent);
-         });*/
-
-        // BLOCK 3
-        // Ausgabe von kleineren Informationen
-        // Set text with string from component's properties
         $('#studyId').text("Study ID: " + jatos.studyId);
         $('#componentId').text("Component ID: " + jatos.componentId);
         $('#workerId').text("Worker ID: " + jatos.workerId);
         $('#resultId').text("Result ID: " + jatos.studyResultId);
-        // Wait for any key press and start next component
-        //$(document).keydown(function (event) {
-        //    jatos.EndComponent();
-        //});
-
     });
 </script>
 
 <div class="container">
     <div class="jumbotron" style="text-align: center">
         <h3>FINISHED Experiment - Process Acceptance Testing</h3>
-        <h4>END PAGE</h4>
         <h4>Thank you very much for participating in our experiment regarding process acceptance.</h4>
-        <h5>You will find all the necessary information for your payment below: </h5>
+        <h4>You will find all the necessary information for your payment below: </h4>
+        <br><br>
         <p id="studyId"></p>
         <p id="componentId"></p>
         <p id="workerId"></p>

@@ -1,11 +1,11 @@
-<!-- NOTE: files have to be in directory /copyBonita/submitTravelRequest.html .. because of JATOS -->
-
 <!DOCTYPE html>
 
 <html ng-app="pat"> <!-- SCOPE pat -->
 <head>
     <meta charset="utf8"/>
     <title>PAT - Process Acceptance Testing</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 
     <!-- Style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,6 +15,9 @@
     <!-- JATOS -->
     <script type="text/javascript" src="/study_assets/pat/libs/jatos/jatos.js"></script>
 
+    <!-- SurveyJS -->
+    <script type="text/javascript" src="/study_assets/pat/libs/surveyjs/survey.ko.min.js"></script>
+
     <!-- AngularJS -->
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-animate.js"></script>
@@ -22,19 +25,15 @@
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-resource.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-route.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-sanitize.js"></script>
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-mocks.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-touch.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-aria.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-messages.js"></script>-->
 
     <!-- 3rd Party -->
     <script type="text/javascript" src="/study_assets/pat/libs/3rdparty/ngBonita.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/3rdparty/ngStorage.js"></script>
 
     <!-- Controller -->
-    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit.controller.js"></script>
     <script type="text/javascript" src="/study_assets/pat/scripts/controllers/review.controller.js"></script>
     <script type="text/javascript" src="/study_assets/pat/scripts/controllers/review2.controller.js"></script>
+    <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit.controller.js"></script>
     <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit2.controller.js"></script>
     <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit3.controller.js"></script>
     <script type="text/javascript" src="/study_assets/pat/scripts/controllers/submit4.controller.js"></script>
@@ -52,59 +51,74 @@
     <script type="text/javascript" src="/study_assets/pat/scripts/app.js"></script>
 </head>
 
-<body ng-controller="SubmitController"> <!-- Scope SubmitController -->
-
-<!--<div style="text-align: center">
-    <h1>Component's Properties:</h1>
-    <p id="studyId"></p>
-    <p id="componentId"></p>
-    <p id="workerId"></p>
-    <p id="jsonInputData"></p>
-    <p>Press any key to continue</p>
-</div>-->
-
-<script>
-    // What todo when jatos.js is finished initializing
-    jatos.onLoad(function () {
-
-        //BLOCK 1
-        // Wait for submitButton to be pressed and then start next component
-        $("#nextButton").click(function () {
-            jatos.startNextComponent();
-        });
-
-        /*
-         // BLOCK 2
-         // Kann für den Fragebogen am Ende genutzt werden, um die Angaben durch Teilnehmer auszuwerten
-         // Wait for any button to be pressed and then submit data and start next component
-         $(document).keydown(function(event) {
-         // Send back some result data to JATOS
-         var componentResultData = "These are some very scientific result data.";
-         jatos.submitResultData(componentResultData, jatos.startNextComponent);
-         });*/
-
-        /*
-         // BLOCK 3
-         // Ausgabe von kleineren Informationen
-         // Set text with string from component's properties
-         $('#studyId').text("Study ID: " + jatos.studyId);
-         $('#componentId').text("Component ID: " + jatos.componentId);
-         $('#workerId').text("Worker ID: " + jatos.workerId);
-         $('#jsonInputData').text("Object 'someText' from JSON input data: " + jatos.componentJsonInput.someText);
-         // Wait for any key press and start next component
-         $(document).keydown(function (event) {
-         jatos.startNextComponent();
-         });*/
-
-    });
-</script>
+<body>
 
 <div class="page-header" style="text-align: center">
     <h3>Questionnaire 2</h3>
-    <h4>Form 3 - Mechanical Turk</h4>
+    <h4>Experiment 2 - Mechanical Turk</h4>
 </div>
 
+<!-- Survey -->
+<div class="container">
+    <div id="SurveyExperiment2"></div>
+</div> <!-- end container -->
 
+<script>
+
+    var resultDataInJason;
+
+    jatos.onLoad(function () {
+        Survey.Survey.cssType = "bootstrap";
+        var survey            = new Survey.Survey(
+                {
+                    pages                                          : [{
+                        name     : "page1",
+                        questions: [{
+                            type      : "radiogroup",
+                            choices   : [{
+                                value: "value1",
+                                text : "I felt good and understood the process immediately."
+                            }, {value: "value2", text: "I felt insecure and the process was miserly explained."}],
+                            isRequired: true,
+                            name      : "What did you feel during the execution of the process?"
+                        }, {
+                            type      : "radiogroup",
+                            choices   : [{
+                                value: "value1",
+                                text : "The process design is practical and well designed."
+                            }, {value: "value2", text: "The process design is awfully implemented and complicated."}],
+                            isRequired: true,
+                            name      : "What did you think during the process?"
+                        }, {
+                            type      : "radiogroup",
+                            choices   : [{
+                                value: "value1",
+                                text : "I would like to keep this travel request process."
+                            }, {
+                                value: "value2",
+                                text : "I would like to complain about the travel request process and prefer a different possibility."
+                            }],
+                            isRequired: true,
+                            name      : "What do you think about executing the process again?"
+                        }]
+                    }], showPageTitles: false, storeOthersAsComment: false
+                });
+
+        survey.onComplete.add(function (s) {
+            resultDataInJason = JSON.stringify(s.data);
+        });
+        survey.showNavigationButtons = false;   // no submit-button from surveyjs
+        survey.goNextPageAutomatic   = true;      // after fullfilling questionnaire - finished
+        survey.render("SurveyExperiment2");
+
+        $("#nextButton").click(function () {
+            // Send back result data to JATOS
+            console.log("The results are:" + resultDataInJason);
+
+            jatos.submitResultData(resultDataInJason, jatos.startNextComponent);
+        });
+    });
+</script>
 
 <hr>
 

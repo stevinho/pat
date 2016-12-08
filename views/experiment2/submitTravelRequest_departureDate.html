@@ -1,5 +1,3 @@
-<!-- NOTE: files have to be in directory /copyBonita/submitTravelRequest.html .. because of JATOS -->
-
 <!DOCTYPE html>
 
 <html ng-app="pat"> <!-- SCOPE pat -->
@@ -22,10 +20,6 @@
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-resource.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-route.js"></script>
     <script type="text/javascript" src="/study_assets/pat/libs/angular/angular-sanitize.js"></script>
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-mocks.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-touch.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-aria.js"></script>-->
-    <!--<script type="text/javascript" src="/study_assets/pat/libs/angular/angular-messages.js"></script>-->
 
     <!-- 3rd Party -->
     <script type="text/javascript" src="/study_assets/pat/libs/3rdparty/ngBonita.js"></script>
@@ -52,14 +46,11 @@
     <script type="text/javascript" src="/study_assets/pat/scripts/app.js"></script>
 </head>
 
-
 <body ng-controller="Submit2Controller"> <!-- Scope SubmitController -->
 
 <script>
-    // What todo when jatos.js is finished initializing
     jatos.onLoad(function () {
 
-        //BLOCK 1
         // Wait for submitButton to be pressed and then start next component
         $("#nextButton").click(function () {
             jatos.startNextComponent();
@@ -74,25 +65,17 @@
 
 <form name="inputForm"
       class="form-horizontal center-block">
-
-    <!-- TODO: Datepicker implmentieren -->
     <div class="form-group center-block">
         <label for="departureDate" class="col-sm-2 control-label">Departure date *</label>
         <div class="col-sm-8">
             <span class="label label-danger" ng-show="inputForm.departureDateName.$valid.required">Required!</span>
-            <!--<span class="label label-danger" ng-show="submitted && !departureDate">Required!</span>-->
-            <!--<span class="label label-danger" ng-show="submitted && !inputForm.departureDate.$error.required">Required!</span>-->
             <input type="text"
                    id="departureDate"
                    name="departureDateName"
                    class="form-control center-block"
                    placeholder="Departure date: yyyy-MM-dd"
                    ng-model="departureDate"
-                   ng-model-options="{ getterSetter: true }"
                    required>
-            <!--ng-required="departureDate">-->
-            <!-- To test and see what user is typing, use following code: will display the input simultaneously -->
-            <!-- <span ng-bind="departureDate"></span> -->
         </div>
     </div>
 
@@ -114,7 +97,6 @@
     </div>
 </form>
 
-
 <hr>
 
 <div class="form-group pull-right">
@@ -126,12 +108,6 @@
         </button>
     </div>
 </div>
-
-<!-- Output JSON for test -->
-<input class="form-control"
-       id="disabledInput"
-       type="text"
-       placeholder="{{msg}}" disabled>
 
 </body>
 </html> <!-- SCOPE END pat-->
