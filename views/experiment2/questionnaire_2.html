@@ -1,3 +1,26 @@
+<!--/**
+* Copyright (C) 2016 Steven Bartels
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/-->
+
+<!--/**
+* @name: Questionnaire 2
+* @description: view to display questionnaire after user experienced the second process model
+*
+* @author: Steven Bartels
+*/-->
+
 <!DOCTYPE html>
 
 <html ng-app="pat"> <!-- SCOPE pat -->
@@ -152,6 +175,7 @@
         survey.goNextPageAutomatic = true;        // after fullfilling questionnaire - finished
         survey.render("SurveyExperiment2");
 
+        // by clicking on next button, the results will be sent to jatos and next component starts
         $("#nextButton").click(function () {
             // Send back some result data to JATOS
             console.log("The results are:" + resultDataInJason);

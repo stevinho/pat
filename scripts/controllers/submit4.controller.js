@@ -52,6 +52,9 @@
         //////////////
         function saveUserActions() {
 
+            // if not checked: false. if user checks: true.
+            $scope.hotelNeeded = false;
+
             // Form submit handler (button)
             $scope.submit = function () {
 
