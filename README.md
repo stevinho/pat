@@ -6,6 +6,9 @@ Due to the character of a software prototype there is no claim to completeness o
 
 directory: workspace/jatos_example/jatos-2.1.9-beta_mac_java/study_assets_root/pat/
            your-workspace/dir-name/jatos-dir/study_assets_root/your-study/ [..]
+           
+In Bonita BPM import the .bos-file and click "run" to deploy & install the process.
+
 
 ## LICENSE
 Software-Project is licensed under Apache License 2.0 (2016).
@@ -22,6 +25,7 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
+
 
 ## THIRD-PARTY-PROJECTS
 This project relies on the work and software of the following third-party-projects:
