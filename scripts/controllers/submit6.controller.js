@@ -107,7 +107,12 @@
 
                                 // caseId in URL einsetzen
                                 // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
-                                ProcessDataOp.setCaseIdInUrl(CASEID);
+                                ProcessDataOp.setCaseIdInUrl(CASEID)
+
+                                    // logout function
+                                    .then(function () {
+                                        bonitaAuthentication.logout();
+                                    });
 
                                 // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
                                 $scope.$storage.saveCaseIdToStorage = CASEID;

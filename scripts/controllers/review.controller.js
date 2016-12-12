@@ -76,7 +76,12 @@
 
                         var activityState = {"state": "skipped"};
 
-                        ProcessDataOp.setStateForActivity($scope.activityId[0].id, activityState);
+                        ProcessDataOp.setStateForActivity($scope.activityId[0].id, activityState)
+
+                            // logout function
+                            .then(function () {
+                                bonitaAuthentication.logout();
+                            });
                     }); //end - getActivityId
             }); //end - reviewUserActions.function
     } //end CopyFunction
