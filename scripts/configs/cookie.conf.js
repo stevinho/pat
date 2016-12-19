@@ -32,8 +32,7 @@
     Cookie.$inject = ["$httpProvider"];
 
     /*
-     You need to set withCredentials = true in the $http config to allow cookies to be set on CORS requests.
-     https://quickleft.com/blog/cookies-with-my-cors/
+     * set withCredentials = true in the $httpProvider config to allow cookies to be set on CORS requests
      */
     function Cookie($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
