@@ -83,8 +83,8 @@
                     .success(function successCallback(data) {
 
                         // processID
-                        $scope.processId = data;
-                        console.log("getProcessId -- ok: " + $scope.processId[0].id);
+                        $scope.processId = data[0].id;
+                        console.log("getProcessId -- ok: " + $scope.processId);
 
                         /**
                          * Step 2
@@ -95,7 +95,7 @@
                          * @param payload: user input, assigned to attributes into the bonita business data model (bdm)
                          * @return: returns caseId from created case
                          */
-                        ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
+                        ProcessDataOp.setProcessIdInUrl($scope.processId, $scope.requestPayload)
                             .success(function (data) {
                                 console.log("ProcessDataOp.setProcessId -- ok");
 
