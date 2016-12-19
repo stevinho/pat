@@ -75,5 +75,5 @@
                 console.log("DESTINATION - controller5: " + DESTINATION);
             }; // end - submit.function
         } //end - saveUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);

@@ -102,10 +102,10 @@
                             .success(function (data) {
                                 console.log("ProcessDataOp.setProcessId -- ok");
 
-                                // speichert die CaseId aus des POST-Response (Antwort)
+                                // save caseId from post response
                                 CASEID = data.caseId;
 
-                                // caseId in URL einsetzen
+                                // set caseId in url
                                 // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
                                 ProcessDataOp.setCaseIdInUrl(CASEID)
 
@@ -114,7 +114,7 @@
                                         bonitaAuthentication.logout();
                                     });
 
-                                // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
+                                // save caseId in LocalStorage to make it accessible for the (next) reviewController
                                 $scope.$storage.saveCaseIdToStorage = CASEID;
                                 console.log("$storage - caseId: " + $scope.$storage.saveCaseIdToStorage);
                             })
@@ -127,5 +127,5 @@
                     });
             }; // end - submit.function
         } //end - saveUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);

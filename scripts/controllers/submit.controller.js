@@ -27,7 +27,7 @@
     'use strict';
 
     angular
-        .module('SubmitRequestControllerModule', ['ngBonita', 'ngStorage']) //'ngCookies'
+        .module('SubmitRequestControllerModule', ['ngBonita', 'ngStorage'])
         .controller('SubmitController', SubmitFunction);
 
     SubmitFunction.$inject = ["$scope", "bonitaAuthentication", "ProcessDataOp", '$localStorage'];
@@ -64,7 +64,7 @@
                     "travelRequestInput": {
                         "departureDate" : $scope.departureDate,
                         "numberOfNights": $scope.numberOfNights,
-                        "hotelNeeded"   : $scope.hotelNeeded, //$scope.hotelNeeded = { value : true }; --> returns true/false
+                        "hotelNeeded"   : $scope.hotelNeeded,
                         "destination"   : $scope.destination,
                         "reason"        : $scope.reason
                     }
@@ -74,12 +74,10 @@
                  * Step 1
                  * ProcessDataOp.getProcessId() (factory, processDataOp.service.js)
                  * @api: /bonita/API/bpm/process
-                 * @description: fragt/ruft Bonita BPM nach installierten Prozessen auf und speichert die "processId" ab (/API/bpm/..)
-                 * .success = bei Erfolg Aufruf der (POST-)Methode ProcessDataOp.setProcessIdInUrl
-                 * .error   = bei Misserfolg Ausgabe des Fehlercodes
-                 * @return: HTTP-GET-Response mit einem JSON-Objekt des deployten Business Process, das ProcessId enthält
-                 * https://docs.angularjs.org/api/ng/service/$http#deprecation-notice
-                 * http://stackoverflow.com/questions/16385278/angular-httppromise-difference-between-success-error-methods-and-thens-a
+                 * @description: get processId to instantiate process in step 2 with user input as payload
+                 * .success = call method ProcessDataOp.setProcessIdInUrl
+                 * .error   = return error.message
+                 * @return: returns processId from instanced process
                  */
                 ProcessDataOp.getProcessId()
                     .success(function successCallback(data) {
@@ -92,19 +90,19 @@
                          * Step 2
                          * ProcessDataOp.setProcessIdInUrl(id, payload) (factory, processDataOp.service.js)
                          * @api: /bonita/API/bpm/process/:id/instantiation
-                         * @description: POST-Request an Bonita BPM mit der spezifischen ProcessId sowie dem notwendigen Request-Payload
+                         * @description: set retrieved processId in URL to instantiate process with user input as payload
                          * @params id: processId[0].id
-                         * @param payload: Eingabedaten des User, die Attributen des Bonta Business Data Model zugewiesen werden
-                         * @return: gibt Id des erstellten Case innerhalb der BonitaBPM aus (CaseId)
+                         * @param payload: user input, assigned to attributes into the bonita business data model (bdm)
+                         * @return: returns caseId from created case
                          */
                         ProcessDataOp.setProcessIdInUrl($scope.processId[0].id, $scope.requestPayload)
                             .success(function (data) {
                                 console.log("ProcessDataOp.setProcessId -- ok");
 
-                                // speichert die CaseId aus der POST-Response (Antwort)
+                                // save caseId from post response
                                 CASEID = data.caseId;
 
-                                // caseId in URL einsetzen
+                                // set caseId in url
                                 // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
                                 ProcessDataOp.setCaseIdInUrl(CASEID)
 
@@ -113,7 +111,7 @@
                                         bonitaAuthentication.logout();
                                     });
 
-                                // speichert die caseId im LocalStorage, damit sie für Controller "ReviewController" zugänglich ist
+                                // save caseId in LocalStorage to make it accessible for the (next) reviewController
                                 $scope.$storage.saveCaseIdToStorage = CASEID;
                                 console.log("$storage - caseId: " + $scope.$storage.saveCaseIdToStorage);
                             })
@@ -126,5 +124,5 @@
                     });
             }; // end - submit.function
         } //end - submitUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);

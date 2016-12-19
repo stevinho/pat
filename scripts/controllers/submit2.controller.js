@@ -62,5 +62,5 @@
                 console.log("DEPDATE - controller2: " + DEPDATE);
             }; // end - submit.function
         } //end - saveUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);

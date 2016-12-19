@@ -84,5 +84,5 @@
                             });
                     }); //end - getActivityId
             }); //end - reviewUserActions.function
-    } //end CopyFunction
+    } //end - CopyFunction
 })(angular);

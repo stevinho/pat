@@ -74,5 +74,5 @@
                 console.log("HOTELNEEDED - controller4: " + HOTELNEEDED);
             }; // end - submit.function
         } //end - saveUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);

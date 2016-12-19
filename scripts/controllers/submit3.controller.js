@@ -67,5 +67,5 @@
                 console.log("NUMBEROFNIGHTS - controller3: " + NUMBEROFNIGHTS);
             }; // end - submit.function
         } //end - saveUserActions.function
-    } // end SubmitFunction
+    } // end - SubmitFunction
 })(angular);
