@@ -58,9 +58,9 @@
 
         /**
          * ProcessDataOp.setCaseIdInUrl(caseId)
-         * @description: übergebene caseId wird in URL gesetzt, um die storageId bzw. link auf
+         * @description: übergebene caseId wird in URL gesetzt, um die storageId bzw. Link auf
          *               Business Data Model mit jeweiligen Nutzereingaben zu erhalten, die in BonitaBPM Attributen zugewiesen wurden
-         * @param caseId: jeweilg erzeugte caseId
+         * @param caseId: jeweilig erzeugte caseId
          * @return: JSON-Objekt mit Informationen zum Business Data Model (TravelRequest) und der zugehörigen storageId
          */
         ProcessDataOp.setCaseIdInUrl = function (caseId) {

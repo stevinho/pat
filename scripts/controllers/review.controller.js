@@ -50,14 +50,17 @@
                 // initially approve all request
                 $scope.reviewDecision = "approved";
 
+                // get case id from localStorage (from submit.controller)
                 CASEID = $scope.$storage.saveCaseIdToStorage;
                 console.log("Review caseId: " + CASEID);
 
+                // access task (or activity) from bonita via caseId from localStorage
                 ProcessDataOp.setCaseIdInUrl(CASEID)
                     .success(function (data) {
                         storageID = data.storageId; // access JSON-Attribute "storageId"
                         console.log("storageId: " + storageID);
 
+                        // set storageId to access bonita bdm, which stores user input & assign it to ng-model-variables
                         ProcessDataOp.setStorageIdInUrl(storageID)
                             .success(function (response) {
                                 $scope.departureDate  = response.departureDate;
@@ -69,13 +72,16 @@
                             }); // end - setStorageIdInUrl
                     }); // end - setCaseIdInUrl
 
+                // get all running activities (human tasks)
                 ProcessDataOp.getActivityId()
                     .success(function successCallback(data) {
                         $scope.activityId = data;
                         console.log("getActivityId -- ok: " + $scope.activityId[0].id);
 
+                        // do something with the tasks -- skipped removes activity from portal but is afterwards accessible as archivedHumanActivity
                         var activityState = {"state": "skipped"};
 
+                        // send activityId and state to bonita
                         ProcessDataOp.setStateForActivity($scope.activityId[0].id, activityState)
 
                             // logout function

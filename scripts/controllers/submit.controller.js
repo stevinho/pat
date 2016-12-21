@@ -34,8 +34,6 @@
 
     function SubmitFunction($scope, bonitaAuthentication, ProcessDataOp, $localStorage) {
 
-        var CASEID;
-
         // LocalStorage initialisation
         $scope.$storage = $localStorage.$default({
             // has to be here
@@ -99,21 +97,11 @@
                             .success(function (data) {
                                 console.log("ProcessDataOp.setProcessId -- ok");
 
-                                // save caseId from post response
-                                CASEID = data.caseId;
-
-                                // set caseId in url
-                                // API: /bonita/API/bdm/businessDataReference/:caseId/TravelRequest
-                                ProcessDataOp.setCaseIdInUrl(CASEID)
-
-                                    // logout function
-                                    .then(function () {
-                                        bonitaAuthentication.logout();
-                                    });
-
                                 // save caseId in LocalStorage to make it accessible for the (next) reviewController
-                                $scope.$storage.saveCaseIdToStorage = CASEID;
+                                $scope.$storage.saveCaseIdToStorage = data.caseId;
                                 console.log("$storage - caseId: " + $scope.$storage.saveCaseIdToStorage);
+
+                                bonitaAuthentication.logout()
                             })
                             .error(function (error) {
                                 $scope.status = 'Unable to set process id: ' + error.message;
