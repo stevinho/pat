@@ -33,8 +33,8 @@
     function ProcessDataOp($http) {
 
         var URL_BONITA          = 'http://localhost:8080/bonita';
-        var PACKAGE_MODEL       = 'com.company.model.';
-        var BUSINESS_DATA_MODEL = 'TravelRequest';
+        var BUSINESS_DATA_MODEL = 'com.company.model.';
+        var JAVA_OBJECT         = 'TravelRequest';
         var ProcessDataOp       = {}; //initialise empty object
 
         /**
@@ -65,7 +65,7 @@
          * @return: JSON-Objekt mit Informationen zum Business Data Model (TravelRequest) und der zugehörigen storageId
          */
         ProcessDataOp.setCaseIdInUrl = function (caseId) {
-            return $http.get(URL_BONITA + '/API/bdm/businessDataReference/' + caseId + '/' + BUSINESS_DATA_MODEL);
+            return $http.get(URL_BONITA + '/API/bdm/businessDataReference/' + caseId + '/' + JAVA_OBJECT);
         };
 
         /**
@@ -76,7 +76,7 @@
          * @return: JSON-Objekt mit Informationen zum Business Data Model (TravelRequest) und Nutzereingaben
          */
         ProcessDataOp.setStorageIdInUrl = function (storageId) {
-            return $http.get(URL_BONITA + '/API/bdm/businessData/'+ PACKAGE_MODEL + BUSINESS_DATA_MODEL + '/' + storageId);
+            return $http.get(URL_BONITA + '/API/bdm/businessData/'+ BUSINESS_DATA_MODEL + JAVA_OBJECT + '/' + storageId);
         };
 
         /**
